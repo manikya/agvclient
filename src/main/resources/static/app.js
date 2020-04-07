@@ -1,7 +1,6 @@
 const MAX_SPEED = 1024;
 const MIN_SPEED = 0;
 const DEFAULT_SPEED = 512;
-// todo map these values according to API request value
 const DIRECTION = {
     ArrowUp: "MoveForward",
     ArrowDown: "MoveBackward",
