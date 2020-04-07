@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    font-family: "Courier New", serif;
+}
+
+.rtc-frame {
+    /*padding: 20px;*/
+    position: relative;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+}
+
+.rtc-frame iframe,
+.rtc-frame .mock-iframe {
+    width: 100%;
+    height: calc(100% - 146px);
+    background: darkred;
+}
+
+.rtc-frame .overlay {
+    position: absolute;
+    width: calc(100%);
+    height: calc(100% - 146px);
+    box-shadow: 0 -20px 20px -10px rgba(0,0,0,1) inset;
+    box-sizing: border-box;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+}
+
+.controllers {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+}
+
+.controllers-wrapper {
+    display: flex;
+    margin: 0 32px;
+}
+
+.controllers-wrapper.wrapper-left {
+    flex: 1;
+    flex-direction: column;
+}
+
+h1 {
+    margin: 0;
+    line-height: 60px;
+    color: white;
+    font-size: 22px;
+}
+
+.control-group {
+    flex-direction: column;
+    display: flex;
+    margin: 0 20px;
+}
+
+.target {
+    margin: 12px 0;
+    height: 36px;
+}
+
+.target input[type=text] {
+    height: 36px;
+    background: white;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+.speed {
+    width: 360px;
+    margin: 21px 0;
+    align-self: flex-end;
+    color: white;
+}
+
+.speed label {
+    font-weight: 800;
+    line-height: 32px;
+}
+
+.direction {
+    width: 180px;
+}

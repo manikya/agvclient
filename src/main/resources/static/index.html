@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="fontello.css" rel="stylesheet">
+    <link href="animation.css" rel="stylesheet">
+    <link href="arrows.css" rel="stylesheet">
+    <link href="slider.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+
+    <script src="jquery.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <div class="rtc-frame">
+        <iframe src="https://meet.jit.si/avgtalsettingupenvironment" frameborder="0" allow="autoplay;microphone;camera"></iframe>
+<!--        <div class="mock-iframe"></div>-->
+        <div class="overlay"></div>
+    </div>
+
+    <div class="controllers">
+        <div class="controllers-wrapper wrapper-left">
+            <div>
+                <h1>Title</h1>
+            </div>
+            <div class="target">
+                <input id="target-id" type="text" placeholder="Bot address (192.168.100.1)">
+            </div>
+        </div>
+
+        <div class="controllers-wrapper  wrapper-right">
+            <div class="control-group">
+                <div class="target">
+                    <!--<input id="target-id" type="text" placeholder="Bot address (192.168.100.1)">-->
+                </div>
+
+                <div class="speed">
+                    <!--<label id="label-speed" for="range-speed">Speed</label>-->
+                    <input id="range-speed" class="range-slider" type="range" min="0" max="1024" step="2">
+                </div>
+            </div>
+
+            <div class="direction">
+                <div class="btn-row">
+                    <button id="btn-up" class="dir-btn dir-up"><i class="icon-up-big"></i></button>
+                </div>
+
+                <div class="btn-row">
+                    <button id="btn-left" class="dir-btn dir-left"><i class="icon-left-big"></i></button>
+                    <button id="btn-down" class="dir-btn dir-down"><i class="icon-down-big"></i></button>
+                    <button id="btn-right" class="dir-btn dir-right"><i class="icon-right-big"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

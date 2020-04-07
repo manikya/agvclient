@@ -1,0 +1,37 @@
+
+.btn-row {
+    display: flex;
+    margin: 6px 0;
+}
+
+.dir-btn {
+    border: none;
+    background: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    outline: none;
+    padding: 8px;
+    margin: 6px;
+    transition: all 100ms ease-in;
+    cursor: pointer;
+}
+
+.dir-btn:hover {
+    background: #f6f6f6;
+    transform: scale(1.1);
+}
+
+.dir-btn:active,
+.dir-btn.animate {
+    background: #eeeeee;
+    transform: scale(0.9);
+}
+
+/*.dir-btn.animate {*/
+/*    background: #aaaaaa;*/
+/*}*/
+
+.dir-btn.dir-up {
+    margin: 0 auto;
+}
