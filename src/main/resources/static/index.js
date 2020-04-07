@@ -45,7 +45,7 @@ function move(direction) {
 }
 
 function makeReqURL(direction) {
-    return 'http://' + $('target-id').val() + ":8080/command/run?command=" + direction + "&speed=" + $('#range-speed').val()
+    return 'http://' + $('#target-id').val() + ":8080/command/run?command=" + direction + "&speed=" + $('#range-speed').val()
 }
 
 function handleKeyup(event) {
