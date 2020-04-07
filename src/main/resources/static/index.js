@@ -26,7 +26,7 @@ $(document).ready(() => {
     $('#btn-down').click(() => move(DIRECTION.ArrowDown));
     $('#btn-left').click(() => move(DIRECTION.ArrowLeft));
     $('#btn-right').click(() => move(DIRECTION.ArrowRight));
-    $('#range-speed').change((event) => setSpeed(event.target.value));
+    $('#range-speed').change((event) => speed = +event.target.value);
 });
 
 function move(direction) {
@@ -81,15 +81,11 @@ function handleKeydown(event) {
             animateButton($('#btn-right'));
             break;
     }
-
-    animateButton(event.code);
 }
 
 function setSpeed(_speed) {
-    // console.log(_speed);
     speed = +_speed;
     $('#range-speed').val(+_speed);
-    // $('#label-speed').text(_speed);
 }
 
 function animateButton(button) {

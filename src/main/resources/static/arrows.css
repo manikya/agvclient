@@ -28,10 +28,11 @@
     transform: scale(0.9);
 }
 
-/*.dir-btn.animate {*/
-/*    background: #aaaaaa;*/
-/*}*/
-
 .dir-btn.dir-up {
     margin: 0 auto;
+}
+
+.dir-btn[disabled], .dir-btn.disabled {
+    background: #dddddd;
+    cursor: no-drop;
 }
