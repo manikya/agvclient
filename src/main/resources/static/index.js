@@ -27,6 +27,7 @@ $(document).ready(() => {
     $('#btn-left').click(() => move(DIRECTION.ArrowLeft));
     $('#btn-right').click(() => move(DIRECTION.ArrowRight));
     $('#range-speed').change((event) => speed = +event.target.value);
+    $('#btn-call').click(() => startCall());
 });
 
 function move(direction) {
@@ -34,7 +35,7 @@ function move(direction) {
         console.log("Moving... -- " + direction);
         busy = true;
         $.ajax({
-            url: makeReqURL(direction),
+            url: 'http://' + $('#target-id').val() + ":8080/command/run?command=" + direction + "&speed=" + $('#range-speed').val(),
             contentType: "application/json",
             dataType: 'json',
             success: function (result) {
@@ -42,10 +43,6 @@ function move(direction) {
             }
         }).always(() => busy = false)
     }
-}
-
-function makeReqURL(direction) {
-    return 'http://' + $('#target-id').val() + ":8080/command/run?command=" + direction + "&speed=" + $('#range-speed').val()
 }
 
 function handleKeyup(event) {
@@ -91,4 +88,36 @@ function setSpeed(_speed) {
 function animateButton(button) {
     button.addClass('animate');
     setTimeout(() => button.removeClass('animate'), 100);
+}
+
+function startCall() {
+
+    $.ajax({
+        url: 'http://' + $('#target-id').val() + ":8080/chat/openChat?url=" + $('#txt-url').val(),
+        contentType: "application/json",
+        dataType: 'json',
+        success: function (result) {
+            // console.log(result);
+            $('#chatroom').attr("src", $('#txt-url').val());
+            $('#chatroom').addClass("active");
+            $('.rtc-frame .placeholder').addClass("hidden");
+            $('.call-end').show();
+        }
+    }).done(() => console.log("Starting call...."));
+}
+
+function endCall() {
+
+    $.ajax({
+        url: 'http://' + $('#target-id').val() + ":8080/chat/closeChat",
+        contentType: "application/json",
+        dataType: 'json',
+        success: function (result) {
+            // console.log(result);
+            $('#chatroom').removeAttr("src");
+            $('#chatroom').removeClass("active");
+            $('.rtc-frame .placeholder').removeClass("hidden");
+            $('.call-end').hide();
+        }
+    }).done(() => console.log("Ending call...."));
 }
