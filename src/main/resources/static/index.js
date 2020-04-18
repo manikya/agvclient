@@ -8,7 +8,12 @@ const DIRECTION = {
     ArrowRight: "TurnRight",
     Break: "Break"
 };
-
+const COMMAND = {
+    Cmd1: "command1",
+    Cmd2: "command2",
+    Cmd3: "command3",
+    Cmd4: "command4",
+};
 let busy = false;
 let speed;
 
@@ -26,6 +31,10 @@ $(document).ready(() => {
     $('#btn-down').click(() => move(DIRECTION.ArrowDown));
     $('#btn-left').click(() => move(DIRECTION.ArrowLeft));
     $('#btn-right').click(() => move(DIRECTION.ArrowRight));
+    $('#btn-cmd-1').click(() => move(COMMAND.Cmd1));
+    $('#btn-cmd-2').click(() => move(COMMAND.Cmd2));
+    $('#btn-cmd-3').click(() => move(COMMAND.Cmd3));
+    $('#btn-cmd-4').click(() => move(COMMAND.Cmd4));
     $('#range-speed').change((event) => speed = +event.target.value);
     $('#btn-call').click(() => startCall());
 });
@@ -35,7 +44,7 @@ function move(direction) {
         console.log("Moving... -- " + direction);
         busy = true;
         $.ajax({
-            url: 'http://' + $('#target-id').val() + ":8080/command/run?command=" + direction + "&speed=" + $('#range-speed').val(),
+            url: 'http://' + $('#target-id').val() + ":9090/command/run?command=" + direction + "&speed=" + $('#range-speed').val(),
             contentType: "application/json",
             dataType: 'json',
             success: function (result) {
@@ -93,7 +102,7 @@ function animateButton(button) {
 function startCall() {
 
     $.ajax({
-        url: 'http://' + $('#target-id').val() + ":8080/chat/openChat?url=" + $('#txt-url').val(),
+        url: 'http://' + $('#target-id').val() + ":9090/chat/openChat?url=" + $('#txt-url').val(),
         contentType: "application/json",
         dataType: 'json',
         success: function (result) {
@@ -109,7 +118,7 @@ function startCall() {
 function endCall() {
 
     $.ajax({
-        url: 'http://' + $('#target-id').val() + ":8080/chat/closeChat",
+        url: 'http://' + $('#target-id').val() + ":9090/chat/closeChat",
         contentType: "application/json",
         dataType: 'json',
         success: function (result) {
