@@ -10,9 +10,7 @@ function getQueryParams()
     var query = window.location.search.split('?');
     if ( query.length == 2  )
     {
-        var queryItems = query[1].split('&')
-        var queryMap = new Map( queryItems.map( (e) => e.split('=') ) );
-        return queryMap;
+        return new Map( query[1].split('&').map( (e) => e.split('=') ) );
     }
-    return null;
+    return new Map();
 }
