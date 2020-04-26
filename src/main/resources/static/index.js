@@ -135,12 +135,5 @@ function endCall() {
 function goToStats()
 {
     var target = $.trim($('#target-id').val());
-    if ( target.split('.').length != 4 ) {
-        alert( 'Invalid IP address' )
-    }
-    else
-    {
-        console.log( 'Target: ', target );
-        window.open( './statistics.html?target=' + target, '_self' );
-    }
+    window.open( './statistics.html?target=' + target, '_self' );
 }
