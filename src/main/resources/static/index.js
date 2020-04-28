@@ -135,5 +135,5 @@ function endCall() {
 function goToStats()
 {
     var target = $.trim($('#target-id').val());
-    window.open( './statistics.html?target=' + target, '_self' );
+    window.open( './statistics.html?target=' + target );
 }

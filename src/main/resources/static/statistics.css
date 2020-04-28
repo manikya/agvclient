@@ -1,0 +1,28 @@
+.chart {
+    height: 370px;
+    width: 100%;
+    border-style: solid;
+    border-color: white;
+}
+
+.target input[type=text] {
+    height: 36px;
+    background: white;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    font-family: "Courier New", serif;
+}
+
+.top-bar{
+    padding-right: 25px;
+}

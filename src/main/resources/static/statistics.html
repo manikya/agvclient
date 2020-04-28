@@ -2,123 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Statistics</title>
+    <title>Statistics </title>
 
     <link href="fontello.css" rel="stylesheet">
     <link href="animation.css" rel="stylesheet">
     <link href="arrows.css" rel="stylesheet">
     <link href="slider.css" rel="stylesheet">
     <link href="index.css" rel="stylesheet">
+    <link href="statistics.css" rel="stylesheet">
 
     <script src="jquery.js"></script>
-    <script src="index.js"></script>
     <script src="statistics.js"></script>
     <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script type="text/javascript">
-        window.onload = function() {
-
-            var tempDataPoints = [];
-            var ecgDataPoints = [];
-
-            var ecgChart = new CanvasJS.Chart("ecgChartContainer", {
-                animationEnabled: true,
-                zoomEnabled: true,
-                title: {
-                    text: "ECG"
-                },
-
-                data: [{
-                    type: "line",
-                    dataPoints: ecgDataPoints
-                }]
-            });
-
-
-            var tempChart = new CanvasJS.Chart("tempChartContainer", {
-                animationEnabled: true,
-                zoomEnabled: true,
-                title: {
-                    text: "Body Temperature"
-                },
-                axisX: {
-                    crosshair: {
-                        enabled: true,
-                        snapToDataPoint: true,
-                        valueFormatString: "mm DD"
-                    }
-                },
-                axisY: {
-                    title: "Temp",
-                    includeZero: false,
-                    crosshair: {
-                        enabled: true,
-                        snapToDataPoint: true,
-                    }
-                },
-                data: [{
-                    type: "line",
-                    xValueFormatString: "mm HH DD",
-                    xValueType: "dateTime",
-                    dataPoints: tempDataPoints
-                }]
-            });
-
-            var count =10;
-            function addData(data) {
-                console.log("Data Receeived"+ data);
-                if( data.timestamp === 0){
-                    return;
-                }
-                if(tempDataPoints.length > 10){
-                    tempDataPoints.shift();
-                }
-                if(ecgDataPoints.length > data.ecg.length*10){
-                    for (let i = 0; i < data.ecg.length; i++) {
-                        ecgDataPoints = ecgDataPoints.slice(0,data.ecg.length);
-                    }
-                }
-
-                tempDataPoints.push({
-                    x: new Date(data.timestamp),
-                    y: data.temp
-                });
-
-
-                console.log(data.ecg);
-                for (var i = 0; i < data.ecg.length; i++) {
-                    ecgDataPoints.push({
-                        y: data.ecg[i]
-                    });
-                }
-                count ++;
-                tempChart.render();
-                ecgChart.render();
-                document.getElementById("spo2").innerHTML = "SPO2 "+ data.spo2;
-                document.getElementById("hpm").innerHTML = "BPM " + data.bmp;
-            }
-
-            var updateChart = function () {
-
-                $.getJSON("http://"+ $('#target-id').val() +":9090/sensor", addData);
-
-            };
-
-
-
-            setInterval(function(){updateChart()}, 1000);
-
-        }
-    </script>
 </head>
 <body>
-    <div class="rtc-frame">
-        <h1>Statistics</h1>
-        <input type="text" id="target-ip" />
+    <div class="btn-row">
+        <h1 class="top-bar">Statistics</h1>
+        <div class="target top-bar">
+            <input type="text" id="target-ip" />
+        </div>
+        <h1 for="showTemp" class="top-bar"> <input type="checkbox" id="showTemp" checked/> Temparature </h1>
+        <h1 for="showECG"> <input type="checkbox" id="showECG" checked/> ECG </h1>
     </div>
-    <div id="tempChartContainer" style="height: 370px; width: 100%;"></div>
-    <h3 style="color: white" id="spo2"></h3>
-    <h3 style="color: white" id="hpm"></h3>
-    <div id="ecgChartContainer" style="height: 370px; width: 100%;"></div>
+    <div id="tempChartContainer" class="chart"></div>
+    <div class="btn-row">
+        <h3 class="top-bar" style="color: white" id="spo2"></h3>
+        <h3 class="top-bar" style="color: white" id="hpm"></h3>
+    </div>
+    <div id="ecgChartContainer"  class="chart"></div>
 </body>
 </html>
