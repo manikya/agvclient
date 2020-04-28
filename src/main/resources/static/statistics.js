@@ -120,7 +120,7 @@ window.onload = function () {
 
     var updateChart = function () {
 
-        $.getJSON('http://' + $('#target-id').val() +":9090/sensor", addData);
+        $.getJSON('http://' + $('#target-ip').val() +":9090/sensor", addData);
 
     };
     setInterval(function () {
